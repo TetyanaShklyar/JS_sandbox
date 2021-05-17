@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>
+        JavaScript
+    </title>
+</head>
+
+<body>
+    <h3>Document with JavaScript</h3>
+    When loading this document, a script is executed...<br>
+    <b>Script execution result:</b>
+    <hr>
+    <!-- Start of script block -->
+    <script type="text/javascript">
+        // Command to output text to the document window:
+        document.write("Script in language JavaScript")
+    </script>
+    <!-- Completing the script blockя -->
+    <hr>
+    <b>The script has finished.</b>
+    <script>
+        // How the eval function works:
+        var x = "3 + (5*2 + 6) / 4"
+        document.write(x + " = ")
+        document.write("<b>" + eval(x) + "</b>");
+    </script>
+    <hr>
+    <b>Conditional operator. Ex 1</b>
+    <br>
+    <script>
+        //Conditional operator 
+        var txt, name
+        txt = "Hello my dear friend. What is your name?"
+        name = prompt(txt)
+        if (name == "") {
+            document.write("Sorry, you didn't introduce yourself")
+        } else {
+            document.write("Nice to meet you, " + name + "!")
+        }
+    </script>
+    <b>Conditional operator. Ex 2</b>
+    <br>
+    <script>
+        //Conditional operator
+        var txt, name, msg
+        txt = "What is your name"
+        msg = "Sorry, you didn't introduce yourself"
+        name = prompt(txt)
+        if (name != "") {
+            msg = "Nice to meet you, " + name + "!"
+        }
+        document.write(msg)
+    </script>
+</body>
+
+</html>
