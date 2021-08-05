@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>
+        JavaScript
+    </title>
+</head>
+
+<body>
+    <script>
+        makeHeader("Functions")
+
+        function getRandText(n) {
+            var txt = "Random number (from 1 to 10):<br>* "
+            for (var k = 1; k <= n; k++) {
+                txt += myRand() + " * "
+            }
+            txt += "<br>"
+            return txt
+        }
+        document.write(getRandText(20))
+
+        function myRand() {
+            return 1 + Math.floor(10 * Math.random())
+        }
+
+        function makeHeader(t) {
+            document.write("<h4>" + t + "</h4>")
+        }
+    </script>
+
+    <h3>Global and local variable </h3>
+    <script>
+        var myText = "Global variable"
+        document.write(myText + "<br>")
+
+        function show() {
+            myText = "It's not local variable"
+            document.write(myText + "<br>")
+        }
+        show()
+        document.write(myText + "<br>")
+    </script>
+
+    <h3>Clobal and local variable in the function</h3>
+    <script>
+        var myText = "Global variable"
+        document.write(myText + "<br>")
+
+        function show() {
+            myText = "Variable with hint on Global variable"
+            document.write(myText + "<br>")
+            var myText = "Local variable"
+            document.write(myText + "<br>")
+                // Accessing a global variable with window.
+            document.write(window.myText + "<br>")
+        }
+        show()
+        document.write(myText + "<br>")
+    </script>
+
+    <h3>Function argument passing mechanism</h3>
+    <script>
+        function f(x) {
+            document.write("argument: " + x + "<br>")
+            x++
+            document.write("argument: " + x + "<br>")
+        }
+        var num = 100
+        document.write("variable: " + num + "<br>")
+        f(num)
+        document.write("variable: " + num + "<br>")
+        document.write(typeof(num))
+    </script>
+
+    <h3>A few arguments</h3>
+    <script>
+        function power(x, n) {
+            if (typeof(n) == "undefined") {
+                n = 1
+            }
+            if (typeof(x) == "undefined") {
+                x = 1
+            }
+            var s = 1,
+                k
+            for (k = 1; k <= n; k++) {
+                s *= x
+            }
+            return s
+        }
+        document.write("2<sup>3</sup> = " + power(2, 3) + "<br>")
+        document.write("5<sup>1</sup> = " + power(5) + "<br>")
+        document.write("1<sup>1</sup> = " + power() + "<br>")
+    </script>
+
+    <h3>Recursion - in the function description, the same function is called</h3>
+    <script>
+        function fibs(n) {
+            if (n == 1 || n == 2) {
+                return 1
+            } else {
+                return fibs(n - 1) + fibs(n - 2)
+            }
+        }
+        document.write("<h5>Fibonacci numbers</h5>")
+        for (var k = 1; k <= 10; k++) {
+            document.write(fibs(k) + " ")
+        }
+    </script>
+
+    <h3>Internal functions - functions described in the body of functions</h3>
+    <p>Главная особенность внутренней функции связана с тем, что она имеет доступ к локальным переменным внешней функции (эта особенность внутренних функций называется замыканием).</p>
+    <script>
+        function mlog(x) {
+            var s = 0,
+                k
+            var n = 100
+            for (k = 1; k <= n; k++) {
+                s -= power(-x, k) / k
+            }
+            return s
+
+            function power(z, m) {
+                var p = 1,
+                    i
+                for (i = 1; i <= m; i++) {
+                    p *= z
+                }
+                return p
+            }
+        }
+        document.write("<h5>Use Internal function</h5>")
+        var x = 0.5
+        document.write("ln(1+" + x + ") = " + mlog(x) + "<br>")
+        document.write("Check: " + Math.log(1 + x) + "<br>")
+    </script>
+
+    <h3>Anonymous function</h3>
+    <p>Анонимная функция — это функция, но только без имени</p>
+    <p>Недостаток данного подхода в том, что ано- нимную функцию указанным способом можно вызвать только один раз.
+    </p>
+    <script>
+        var f = function(msg) {
+            document.write(msg + "<br>")
+        }
+        f("Anonymous function")
+
+        (function(msg) {
+            document.write("<b>" + msg + "</b><br>")
+        }("Another function"))
+    </script>
+
+    <h3>Creating a "random" function</h3>
+    <script>
+        var k, n = 6,
+            rnd, color
+        for (k = 1; k <= n; k++) {
+            rnd = Math.random()
+            if (rnd < 0.2) {
+                color = function() {
+                    document.write("red<br>")
+                }
+            } else {
+                if (rnd < 0.5) {
+                    color = function() {
+                        document.write("green<br>")
+                    }
+                } else {
+                    color = function() {
+                        document.write("blue<br>")
+                    }
+                }
+            }
+            color()
+        }
+    </script>
+</body>
+
+</html>
