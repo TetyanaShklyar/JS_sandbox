@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>
+        JavaScript
+    </title>
+</head>
+
+<body>
+    <h2>Objects</h2>
+    <p>В целом это набор или объединение некоторых переменных (которые, напомним, называются свойствами) и функций (называются методами объекта).</p>
+
+    <script>
+        var obj = {
+            name: "Tania",
+            age: 27
+        };
+        document.write("<b>My name is</b> " + obj.name + " <b>I am </b>" + obj.age);
+
+        obj.name = "Tania Shklyar";
+        obj.age++;
+        document.write(" <br> <b>My name is</b> " + obj.name + " <b>I am </b>" + obj.age);
+    </script>
+    <hr>
+    <h3>Object with method</h3>
+    <script>
+        var obj = {
+            name: "Oleh",
+            age: 37,
+            show: function() {
+                document.write("<b>My name is </b>: " + this.name + "<br>")
+                document.write("<b>I am </b>: " + this.age + "<br>")
+            }
+        }
+        obj.show()
+        obj.name = "Oleh Shklyar";
+        obj.age++;
+        obj.show()
+    </script>
+    <hr>
+    <h3>Assigning objects</h3>
+    <script>
+        var objA = {
+            name: "Name One",
+            age: 38,
+            show: function() {
+                document.write("<u>My name is </u>: " + this.name + "<br>")
+                document.write("<u>I am</u>: " + this.age + "<br>")
+            }
+        }
+        document.write("<b>objA:</b><br>")
+        objA.show()
+        var objB = objA;
+        document.write("<b>objB:</b><br>")
+        objB.show()
+        objA.name = "Name Two"
+        objA.age++
+            document.write("<b>objA:</b><br>")
+        objA.show()
+        document.write("<b>objB:</b><br>")
+        objB.show()
+    </script>
+    <hr>
+    <h2>Cуществует возможность описать специальную функцию, которая позволит создавать объекты с одинаковым набором свойств. Такая функция называется конструктором объектов.</h2>
+    <p>Для создания нового объекта с помощью функции-конструктора данная функция вызывается с оператором <b>new</b>.</p>
+    <script>
+        function Fellow(name, age) {
+            this.name = name
+            this.age = age
+            this.show = function() {
+                document.write("<b>My name is</b>: " + this.name + "<br>")
+                document.write("<b>I am</b>: " + this.age + "<br>")
+            }
+        }
+        var objA = new Fellow("Name One", 38)
+        var objB = new Fellow("Name Two", 39)
+        objA.show()
+        objB.show()
+        objB.name = "New Name"
+        objA = objB
+        objA.show()
+        objB.show()
+    </script>
+    <hr>
+    <h2>Operator for-in</h2>
+    <script>
+        document.write("<h4>Colors</h4>")
+        var colors = {
+            color_one: "red",
+            color_two: "yellow",
+            color_three: "green"
+        }
+        for (var s in colors) {
+            document.write(s + " - " + colors[s] + "<br>")
+        }
+        var a = "color_one" in colors
+        document.write("Property availability:" + a);
+    </script>
+    <hr>
+    <h2>Operator delete</h2>
+    <script>
+        var colors = {
+            color_one: "red",
+            color_two: "yellow",
+            color_three: "green",
+            show: function() {
+                with(document) {
+                    write("object properties and methods:<br>")
+                    for (var s in this) {
+                        write(s + " | ")
+                    }
+                    write("<hr>")
+                }
+            }
+        }
+        colors.show()
+        delete colors.color_one
+        colors.show()
+        delete colors.color_two
+        colors.show()
+        delete colors.color_three
+        var tst = '"show" in colors'
+        document.write(tst + " -> " + eval(tst) + "<br>")
+        tst = '"color_three" in colors'
+        document.write(tst + " -> " + eval(tst))
+    </script>
+</body>
+
+</html>
