@@ -3,7 +3,7 @@ npm-debug.log*
 # Зависимости проекта
 node modules
 # Атрибуты папки OSX
-. DS Store
+.DSStore
 # Временные файлы
 *.tmp
 *-
