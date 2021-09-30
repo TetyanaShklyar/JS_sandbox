@@ -5,5 +5,5 @@ node modules
 # Атрибуты папки OSX
 . DS Store
 # Временные файлы
-* .tmp
+*.tmp
 *-
